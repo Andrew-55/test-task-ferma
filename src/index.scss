@@ -46,8 +46,8 @@ button {
     margin-right: auto;
     width: 100%;
     max-width: 1440px;
-    height: 1024px;
-    background: url('./assets/images/109_1.webp') center;
+    height: fit-content;
+    background: url('./assets/images/109_1.webp') center / contain;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     
@@ -76,22 +76,29 @@ button {
 
 .content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+            "content_title main_image"
+            "content_left main_image";
+    align-content: start;
     height: 750px;
+
+    &__title {
+        position: relative;
+        grid-area: content_title;
+        max-width: 559px;
+        max-height: 200px;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 45px;
+        letter-spacing: -0.41px;
+        color: var(--blue_dark);
+        margin-top: 73px;
+        margin-bottom: 52px;
+      }
 
     &__left {
         position: relative;
-        padding-top: 73px;
-
-        &__title {
-            max-width: 559px;
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 45px;
-            letter-spacing: -0.41px;
-            color: var(--blue_dark);
-            margin-bottom: 52px;
-        }
+        grid-area: content_left;
 
         &__description {
             list-style-position: inside;
@@ -114,8 +121,11 @@ button {
         }
     }
 
-    &__right{
+    &__main-image{
         position: relative;
+        width: 100%;
+        height: 750px;
+        grid-area: main_image;
 
         &__phone {
             position: absolute;
@@ -133,7 +143,7 @@ button {
     justify-content: space-between;
 
     &__message {
-        color: black;
+        color: var(--blue_dark);
         font-weight: 500;
         font-size: 24px;
         line-height: 31px;
@@ -278,29 +288,321 @@ button {
 }
 
 @media screen and (max-width: 1360px) {
-
+    .container {
+        padding-left: 32px;
+        padding-right: 0;
+    }
 }
 
 @media screen and (max-width: 1200px) {
+    .content {
+        display: grid;
+        grid-template-areas: 
+                "content_title main_image"
+                "content_left main_image";
+        align-content: start;
+        min-height: 700px;
+    
+        &__title {
+            max-width: 559px;
+            max-height: 200px;
+            font-size: 32px;
+            line-height: 40px;
+          }
+    
+        &__left {
+   
+            &__description {
+                font-size: 20px;
+                line-height: 24px;
+            }
+    
+            &__slogan {
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+    
+        &__main-image{
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+   
+            &__phone {
+                width: 500px;
+                height: 446px;
+            }
+        }
+    }
 
+    .footer {
+        &__message {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    }
+
+    .round {
+   
+        &_big-rose {
+            --size-ellipse: 214px;
+            top: 58px;
+            right: 124px;
+        }
+    
+        &_big-green {
+            --size-ellipse: 270px;
+            top: 118px;
+            right: 88px;
+        }
+    
+        &_big-blue {
+            --size-ellipse: 182px;
+            top: 126px;
+            right: 244px;
+        }
+    
+        &_little-rose {
+            --size-ellipse: 40px;
+            top: 480px;
+            right: 70px;
+        }
+    
+        &_little-green {
+            --size-ellipse: 32px;
+            top: 300px;
+            right: 460px;
+        }
+    
+        &_little-blue {
+            --size-ellipse: 32px;
+            top: 0px;
+            right: 100px;
+        }
+    }
 }
 
 @media screen and (max-width: 992px) {
+    .container {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        height: 1220px;
+    }
 
-}
+    .content {
+        height: 980px;
+        grid-template-areas: 
+                "content_title"
+                "main_image"
+                "content_left";
 
-@media screen and (max-width: 768px) {
+        &__title {
+            position: relative;
+            max-width: 80%;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+    }
+
+    .footer {
+        padding-top: 0;
+        padding-right: 0;
+        display: flex;
+        row-gap: 16px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+
 
 }
 
 @media screen and (max-width: 576px) {
+    .container {
+        height: 1100px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
 
+    .content {
+        height: 850px;
+        justify-items: center;
+       
+        &__main-image{
+            width: 350px;
+            height: 350px;
+            margin-left: auto;
+            margin-right: auto;
+       
+            &__phone {
+                width: 350px;
+                height: 312px;
+            }
+        }
+        
+        &__left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .round {
+   
+        &_big-rose {
+            --size-ellipse: 150px;
+            top: 50px;
+            right: 82px;
+        }
+    
+        &_big-green {
+            --size-ellipse: 190px;
+            top: 80px;
+            right: 70px;
+        }
+    
+        &_big-blue {
+            --size-ellipse: 128px;
+            top: 92px;
+            right: 165px;
+        }
+    
+        &_little-rose {
+            --size-ellipse: 32px;
+            top: 302px;
+            right: 40px;
+        }
+    
+        &_little-green {
+            --size-ellipse: 24px;
+            top: 200px;
+            right: 320px;
+        }
+    
+        &_little-blue {
+            --size-ellipse: 24px;
+            top: 0px;
+            right: 50px;
+        }
+    }
 }
 
 @media screen and (max-width: 480px) {
+    .container {
+        height: 1000px;
+    }
 
-}
+    .logo {
+        margin-left: auto;
+        margin-right: 0;
+        width: 49px;
+        height: 45px;
+    
+        &__image {
+            width: 42px;
+            height: 40px;
+        }
+    }
 
-@media screen and (max-width: 375px) {
+    .content {
+        height: 750px;
+        &__title {
+            margin-top: 0;
+            font-size: 24px;
+            line-height: 30px;
+          }
+    
+        &__left {
+   
+            &__description {
+                font-size: 16px;
+                line-height: 20px;
+            }
+    
+            &__slogan {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+
+        &__main-image{
+            width: 320px;
+            height: 320px;
+            margin-left: auto;
+            margin-right: auto;
+       
+            &__phone {
+                width: 320px;
+                height: 300px;
+            }
+        }
+    }
+
+    .round {
+
+        &_logo-blue {
+            --size-ellipse: 30px;
+            left: 0;
+            top: 10px;
+        }
+        
+        &_logo-green {
+            --size-ellipse: 30px;
+            bottom: 0;
+            right: 2px;
+        }
+        
+        &_logo-rose {
+            --size-ellipse: 36px;
+            top: 0;
+            right: 0;
+        }
+   
+        &_big-rose {
+            --size-ellipse: 135px;
+            top: 50px;
+            right: 82px;
+        }
+    
+        &_big-green {
+            --size-ellipse: 175px;
+            top: 80px;
+            right: 70px;
+        }
+    
+        &_big-blue {
+            --size-ellipse: 118px;
+            top: 92px;
+            right: 158px;
+        }
+    
+        &_little-rose {
+            --size-ellipse: 24px;
+            top: 290px;
+            right: 30px;
+        }
+    
+        &_little-green {
+            --size-ellipse: 20px;
+            top: 200px;
+            right: 290px;
+        }
+    
+        &_little-blue {
+            --size-ellipse: 20px;
+            top: 0px;
+            right: 20px;
+        }
+    }
+
+    .footer {
+        &__message {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+   
 
 }
